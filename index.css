@@ -1,0 +1,94 @@
+
+/* WhatsApp-style Global Styles */
+:root {
+  --wa-header: #008069;
+  --wa-bg: #efe7de;
+  --wa-user-bubble: #dcf8c6;
+  --wa-received-bubble: #ffffff;
+  --wa-send-btn: #00a884;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--wa-bg);
+}
+
+body {
+  font-family: 'Segoe UI', 'Inter', 'Hind Siliguri', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wa-bg-pattern {
+  background-color: var(--wa-bg);
+  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+  background-repeat: repeat;
+  background-size: 360px;
+  opacity: 0.08;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wa-bubble {
+  position: relative;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+  margin-bottom: 2px;
+}
+
+/* User Bubble Tail */
+.wa-bubble-user::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 12px;
+  height: 13px;
+  background-color: var(--wa-user-bubble);
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+  z-index: 1;
+}
+
+/* Received Bubble Tail */
+.wa-bubble-received::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 12px;
+  height: 13px;
+  background-color: var(--wa-received-bubble);
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+  z-index: 1;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 10px;
+}
+
+textarea {
+  resize: none;
+}
+
+.animate-pop-in {
+  animation: pop-in 0.15s cubic-bezier(0.26, 0.53, 0.74, 1.48) forwards;
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
